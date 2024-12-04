@@ -27,12 +27,12 @@ function pageLoad() {
   let mainIngredient = getIngredient();
   console.log(mainIngredient);
 
-  function getMeals(ingredient) {
+  function getMeals() {
     try {
-      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+      fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${mainIngredient}`)
       .then((res) => res.json())
-      .then((data) => {
-      favouriteMeals = data;
+      .then((result) => {
+      favouriteMeals = result;
       mealsArray = favouriteMeals.meals;
       console.log(mealsArray);
       if (mealsArray === null) {
@@ -41,33 +41,19 @@ function pageLoad() {
         getMeals(mainIngredient);
       }
       return mealsArray;
-  })
-    } catch (err) {
-      console.log("Error fetching API", err);
-    }
+      })
+      }
+      catch (err) {
+        console.log("Error fetching API", err);
+      }
   }
 
-let orderSelection = (getMeals(mainIngredient));
-console.log(orderSelection);
+  console.log(getMeals());
+  // Returns 'undefined'. Using other methods returns Promise { <pending> }
 
-console.log()
+  }
 
+/* The getMeals function now seems to be doing what it's supposed to do. The problem I'm now having is using the data outside the function other than logging it to the console. */
 
-
-/* The getMeals function now seems to be doing what it's supposed to do. The problem I'm now having is doing anything with the data outside the function other than logging it to the console. */
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 
 pageLoad();
