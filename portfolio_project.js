@@ -2,6 +2,8 @@
 let orders = [];
 let favouriteMeals = [];
 
+function pageLoad() {
+
 // Check if session storage already populated
 if (
   sessionStorage.getItem("orderNumber") === null ||
@@ -65,7 +67,8 @@ function getMeals() {
 // Call getMeals function
 getMeals();
 
-/* Function to create order objects from API data, pass them to session storage and update completed status */
+/* Function to create order objects from API data, pass them to session storage and update completed status. I tried to split this into two functions, but owing to the asynchronous nature of the overall program, sessionStorage.getItems returns an empty array outside the function and I could find a successful solution for this. */
+
 const createOrders = (fn) => {
   // Get asynchronous data
   fn()
@@ -141,3 +144,7 @@ const createOrders = (fn) => {
 
 // Function call to createOrders
 const userOrders = createOrders(getMeals);
+
+}
+
+pageLoad();
