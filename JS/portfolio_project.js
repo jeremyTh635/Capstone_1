@@ -67,7 +67,7 @@ function getMeals() {
 // Call getMeals function
 getMeals();
 
-/* Function to create order objects from API data, pass them to session storage and update completed status. I tried to split this into two functions, but owing to the asynchronous nature of the overall program, sessionStorage.getItems returns an empty array outside the function and I could find a successful solution for this. */
+/* Function to create order objects from API data, pass them to session storage and update completed status. I tried to split this into two functions, but owing to the asynchronous nature of the overall programme, sessionStorage.getItems returns an empty array outside the createOrders function and I could not find a successful solution for this. */
 
 const createOrders = (fn) => {
   // Get asynchronous data
