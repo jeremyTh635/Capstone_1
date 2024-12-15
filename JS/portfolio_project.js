@@ -79,16 +79,16 @@ const createOrders = (fn) => {
       order.description =
         meals[Math.floor(Math.random() * meals.length)].strMeal;
       order.orderNo = orders.length + 1;
-      order.completed = Boolean(
+      order.completed = !!Number(
         prompt(
-          "Is this order completed? Type Y or leave it blank if not completed."
+          "Is this order completed? Type 1 if completed or 0  if not completed"
         )
       );
       orders.push(order);
 
       // Code to repeat above process to create additional order objects
       let answer = prompt("Do you want to make another order? Type Y or N");
-      if (answer === "Y") {
+      if (answer === "Y" || answer === "y" || answer === "yes" || answer === "Yes") {
         mainIngredient = getIngredient();
         getMeals(mainIngredient);
         createOrders(getMeals);
@@ -111,10 +111,10 @@ const createOrders = (fn) => {
         let userChoice = prompt(
           `Here is a list of uncompleted orders:\n\n${uncompletedList(
             uncompleted
-          )}\n\nDo you wish to mark these as completed? Type 1 for yes and 0 for no.`
+          )}\n\nDo you wish to mark these as completed? Type Y for yes and N for no.`
         );
         // Nested loop to enable users to enable user to update completed status if they so wish
-        if (userChoice === "1") {
+        if (userChoice === "Y" || userChoice === "y" || answer === "yes" || answer === "Yes") {
           for (let i = 0; i < uncompleted.length; i++) {
             for (let j = 0; j < orderObjects.length; j++) {
               if (orderObjects[j].orderNo === uncompleted[i].orderNo) {
