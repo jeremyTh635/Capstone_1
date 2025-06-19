@@ -132,7 +132,7 @@ const createOrders = (fn) => {
         }
       }
     })
-    // Catch block contains code deal with event of API returning {"meals":null}
+    // Catch block contains code dealing with event of API returning {"meals":null}
     .catch((err) => {
       console.log(err);
       alert("Your ingredient is not available.");
